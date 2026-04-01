@@ -5,14 +5,20 @@ import joblib
 st.set_page_config(page_title="Heart Disease Prediction")
 st.title("❤️ Heart Disease Prediction App")
 
-# Load model safely
+st.write("App started...")  # Debug line
+
+model = None
+scaler = None
+expected_cols = None
+
 try:
     model = joblib.load("logistic_heart_model.pkl")
     scaler = joblib.load("heart_scaler.pkl")
     expected_cols = joblib.load("heart_Columns.pkl")
     st.success("Model loaded successfully ✅")
 except Exception as e:
-    st.error(f"Error loading model: {e}")
+    st.error("❌ ERROR LOADING MODEL:")
+    st.write(e)
 
 st.markdown("provide the following details")
 
